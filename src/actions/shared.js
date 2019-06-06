@@ -1,4 +1,6 @@
 import {getInitialData} from '../utils/API'
+import receiveUsers from './users'
+import receiveQuestions from './questions'
 
 
 export function handleInitialData(){
