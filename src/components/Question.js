@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 class Question extends Component {
 
     render() {
+        console.log('props:',this.props.authedUser)
         return (
             <div className='question'>
                 <div className = 'q-header'>
@@ -18,6 +20,7 @@ class Question extends Component {
 
                 <div className = 'poll'>
                     <span> Would you rather? </span>
+                    <span> ..... do ....</span>
                     <button> view poll </button>
                 </div>
                 </div>
@@ -28,5 +31,14 @@ class Question extends Component {
     }
 }
 
+function mapStateToProps({authedUser, questions}, {id}){
+    const question = questions[id]
 
-export default Question
+    return{
+        authedUser,
+        question,
+    }
+}
+
+
+export default connect(mapStateToProps)(Question)

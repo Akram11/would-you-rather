@@ -11,7 +11,7 @@ class QuestionsContainer extends Component {
                 {this.props.questionIds.map((id) => (
                     <li>
                         <p>question id: {id}</p>
-                        <Question />
+                        <Question id ={id}/>
                     </li>
                 ))}
             </div>
