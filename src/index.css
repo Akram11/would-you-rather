@@ -28,6 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  margin: 15px;
 }
    
 .q-header{

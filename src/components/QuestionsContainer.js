@@ -6,12 +6,11 @@ class QuestionsContainer extends Component {
 
     render() {
         return (
-            <div className ="container">
+            <div className="container">
                 QuestionsContainer
                 {this.props.questionIds.map((id) => (
-                    <li>
-                        <p>question id: {id}</p>
-                        <Question id ={id}/>
+                    <li key={id}>
+                        <Question id={id} />
                     </li>
                 ))}
             </div>
@@ -22,9 +21,10 @@ class QuestionsContainer extends Component {
 
 
 function mapStateToProps({ questions }) {
-     return {
-         questionIds: Object.keys(questions)
-     }    
+    return {
+        questionIds: Object.keys(questions)
+        .sort((a,b)=>questions[a].timestamp - questions[b].timestamp )
+    }
 }
 
 
