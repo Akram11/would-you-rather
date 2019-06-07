@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-
+import {formatQuestion} from '../utils/helper'
 class Question extends Component {
 
     render() {
@@ -33,10 +33,11 @@ class Question extends Component {
 
 function mapStateToProps({authedUser, questions}, {id}){
     const question = questions[id]
+    const author = question.author
 
     return{
         authedUser,
-        question,
+        question: formatQuestion(question, author, authedUser),
     }
 }
 
