@@ -14,7 +14,6 @@ class QuestionsContainer extends Component {
                         <Question />
                     </li>
                 ))}
-            <Question />
             </div>
         )
     }
