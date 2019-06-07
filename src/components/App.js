@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
-import {handleInitialData} from '../actions/shared'
+import { handleInitialData } from '../actions/shared'
+import  QuestionsContainer  from './QuestionsContainer'
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         hello
+        <QuestionsContainer />
     </div>
     );
   }
