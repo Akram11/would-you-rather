@@ -8,6 +8,7 @@ import App from './components/App';
 import middleware from './middlewares'
 
 const store = createStore(reducer, middleware)
+store !== undefined ?   console.log(" yet"): console.log("not yet")
 
 ReactDOM.render(
 <Provider store = {store}>

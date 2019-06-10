@@ -5,14 +5,19 @@ import { connect } from "react-redux";
 class QuestionsContainer extends Component {
 
     render() {
+        //console.log("answered", [].concat.apply([], this.props.answered))
+        console.log("inside props",this.props)
+        const {users, questions, authedUser} = this.props
         return (
+   
             <div className="container">
                 QuestionsContainer
-                {this.props.questionIds.map((id) => (
+                {/* {authedUser}
+                 {this.props.questions.id.map((id) => (
                     <li key={id}>
                         <Question id={id} />
                     </li>
-                ))}
+                ))} */}
             </div>
         )
     }
@@ -20,12 +25,30 @@ class QuestionsContainer extends Component {
 }
 
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ authedUser, users, questions }) {
+
+   const  questionsIds = questions && Object.keys(questions)
+   //const authedUserAnswers = authedUser ? users[authedUser].answers : null;
+
+   const   authedUserAnswers =  (authedUser !== null) ? 
+        users[authedUser].name
+   
+   :  ("authed is null")
+   console.log(authedUserAnswers)
+  // const authedUserAnswers = authedUser ? users[authedUser].answers : null;
     return {
-        questionIds: Object.keys(questions)
-        .sort((a,b)=>questions[a].timestamp - questions[b].timestamp )
+        users,
+        authedUserAnswers,
+        questions,
+        authedUser,
+        questionsIds
     }
+ 
 }
 
+// const authedUserAnswers = users[authedUser]
+// questions: questionsIds,
+// authedUserAnswers,
+// authedUser
 
 export default connect(mapStateToProps)(QuestionsContainer)
