@@ -10,6 +10,5 @@ export function formatQuestion(question, author ,authedUser){
         name,
         avatar: avatarURL,
         text: optionOne.text,
-        hasAnswered: (optionOne.votes.includes(authedUser) ||  optionTwo.votes.includes(authedUser)) ? true : false,
     }
 }

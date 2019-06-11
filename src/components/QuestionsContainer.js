@@ -5,14 +5,24 @@ import { connect } from "react-redux";
 class QuestionsContainer extends Component {
 
     render() {
+        console.log("inside props", this.props)
         return (
             <div className="container">
-                QuestionsContainer
-                {this.props.questionIds.map((id) => (
+                answered
+                {this.props.answeredQs && this.props.answeredQs.map((id) => (
                     <li key={id}>
                         <Question id={id} />
                     </li>
                 ))}
+                <div>
+                    unansweredQs
+                {this.props.unansweredQs && this.props.unansweredQs.map((id) => (
+                        <li key={id}>
+                            <Question id={id} />
+                        </li>
+                    ))}
+
+                </div>
             </div>
         )
     }
@@ -20,10 +30,14 @@ class QuestionsContainer extends Component {
 }
 
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users, authedUser }) {
+
+    const questionIds = Object.keys(questions).sort((a, b) => questions[a].timestamp - questions[b].timestamp)
+    const answeredQs = authedUser && Object.keys(users[authedUser].answers)
     return {
-        questionIds: Object.keys(questions)
-        .sort((a,b)=>questions[a].timestamp - questions[b].timestamp )
+        questionIds,
+        answeredQs,
+        unansweredQs: authedUser && questionIds.filter(q => !answeredQs.includes(q)),
     }
 }
 
