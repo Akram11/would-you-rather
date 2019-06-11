@@ -69,3 +69,8 @@ body {
   align-items: flex-start;
   padding-left: 20px;
 }
+
+/* ------NewQuestion------ */
+h2{
+  text-align: center
+}

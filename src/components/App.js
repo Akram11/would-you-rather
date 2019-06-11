@@ -3,7 +3,7 @@ import '../App.css';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
 import  QuestionsContainer  from './QuestionsContainer'
-
+import NewQuestion from './NewQuestion';
 class App extends Component {
 
   componentDidMount() {
@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         hello
-        <QuestionsContainer />
+        <NewQuestion />
     </div>
     );
   }
