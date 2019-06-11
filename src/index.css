@@ -74,3 +74,8 @@ body {
 h2{
   text-align: center
 }
+h1 {
+  overflow: hidden;
+  text-align: center;
+}
+
