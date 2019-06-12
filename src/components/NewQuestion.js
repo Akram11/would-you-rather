@@ -25,7 +25,8 @@ class NewQuestion extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-
+        const { question } = this.state
+        console.log(this.state)
     }
 
     render() {
@@ -33,7 +34,7 @@ class NewQuestion extends Component {
             <div className='container'>
                 <h2 className='center'> Create a new question</h2>
                 <h3>Would you rather...</h3>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit = {this.handleSubmit}>
                     <Form.Group>
                         <Form.Control size="lg" type="text" placeholder="first option" id="optionOne" onChange={this.handleChange} />
                         <h4>OR</h4>
@@ -42,8 +43,6 @@ class NewQuestion extends Component {
                         <span> {this.state.option}</span>
                     </Form.Group>
                 </Form>
-                {this.state.optionOne}
-                {this.state.optionTwo}
             </div>
         )
     }
