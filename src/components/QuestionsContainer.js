@@ -9,14 +9,14 @@ class QuestionsContainer extends Component {
         return (
             <div className="container">
                 answered
-                {this.props.answeredQs && this.props.answeredQs.map((id) => (
+                { this.props.answeredQs.map((id) => (
                     <li key={id}>
                         <Question id={id} />
                     </li>
                 ))}
                 <div>
                     unansweredQs
-                {this.props.unansweredQs && this.props.unansweredQs.map((id) => (
+                { this.props.unansweredQs.map((id) => (
                         <li key={id}>
                             <Question id={id} />
                         </li>
@@ -33,11 +33,11 @@ class QuestionsContainer extends Component {
 function mapStateToProps({ questions, users, authedUser }) {
 
     const questionIds = Object.keys(questions).sort((a, b) => questions[a].timestamp - questions[b].timestamp)
-    const answeredQs = authedUser && Object.keys(users[authedUser].answers)
+    const answeredQs =  Object.keys(users[authedUser].answers)
     return {
         questionIds,
         answeredQs,
-        unansweredQs: authedUser && questionIds.filter(q => !answeredQs.includes(q)),
+        unansweredQs:  questionIds.filter(q => !answeredQs.includes(q)),
     }
 }
 

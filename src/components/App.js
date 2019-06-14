@@ -15,13 +15,20 @@ class App extends Component {
     return (
       <div className="App">
         hello
-        <NewQuestion />
+        {this.props.loading === true
+        ? null
+        :<QuestionsContainer /> }
+        
     </div>
     );
   }
 }
 
 
+function mapStateToProps({authedUser}){
+    return{
+      loading: authedUser === null 
+    }
+}
 
-
-export default connect()(App);
+export default connect(mapStateToProps)(App);

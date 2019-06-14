@@ -8,6 +8,6 @@ export function getInitialData(){
     }))
 }
 
-export function addQuestion (questions) {
-    return _saveQuestion(questions)
+export function addQuestion (question) {
+    return _saveQuestion(question)
   }
