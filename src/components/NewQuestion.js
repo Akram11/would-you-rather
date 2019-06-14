@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import {handleAddQuestion} from '../actions/questions'
 
+
 class NewQuestion extends Component {
 
     state = {
@@ -13,8 +14,8 @@ class NewQuestion extends Component {
 
     handleChange = (e) => {
         const option = e.target.value
-        const key = e.target.id
-        key === 'optionOne' ?
+        const id = e.target.id
+        id === 'optionOne' ?
             this.setState((state) => ({
                 ...state,
                 optionOne: option
@@ -26,8 +27,10 @@ class NewQuestion extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const { optionOne, optionTwo } = this.state
+        const  optionOne = this.state.optionOne
+        const  optionTwo = this.state.optionTwo
         const {dispatch} = this.props
+        console.log('options',optionOne, optionTwo)
         dispatch(handleAddQuestion(optionOne, optionTwo))
     }
 

@@ -55,9 +55,11 @@ body {
 .avatar{
   border: 1px solid gray;
   border-radius: 50%;
-  display:block;
   max-width: 30%;
   height: 60px;
+  align-self: center;
+  margin-left:  15px;
+  align-items: flex-end;
 }
 
 .poll{
