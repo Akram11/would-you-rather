@@ -14,21 +14,21 @@ class UnansweredQuestion extends Component{
   <fieldset>
     <Form.Group as={Row}>
       <Form.Label as="legend" column sm={3}>
-        Would you Rather ...
+        <span>Would you Rather ...</span>
       </Form.Label>
       <Col sm={5}>
         <Form.Check
           type="radio"
-          label="first radio"
-          name="formHorizontalRadios"
-          id="formHorizontalRadios1"
+          label="first Option"
+          name="optionOne"
+          id="optionOne"
         />
             OR
         <Form.Check
           type="radio"
-          label="third radio"
-          name="formHorizontalRadios"
-          id="formHorizontalRadios3"
+          label="Second Option"
+          name="optionTwo"
+          id="optionTwo"
         />
       </Col>
     </Form.Group>
@@ -36,7 +36,7 @@ class UnansweredQuestion extends Component{
 
 
   <Form.Group as={Row}>
-    <Col sm={{ span: 10, offset: 2 }}>
+    <Col sm={{ span: 5, offset: 3 }}>
       <Button type="submit" block>Submit!</Button>
     </Col>
   </Form.Group>
