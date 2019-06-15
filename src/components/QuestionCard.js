@@ -5,7 +5,7 @@ class Question extends Component {
 
     render() {
         const {question} = this.props
-        console.log(this.props)
+        console.log('inside question',this.props)
         return (
             <div className='question'>
                 <div className = 'q-header'>
@@ -21,7 +21,7 @@ class Question extends Component {
 
                 <div className = 'poll'>
                     <span> Would you rather? </span>
-                    <span> {question.text}</span>
+                    <span> {question.optionOne}, OR ...</span>
                     <button> view poll </button>
                 </div>
                 </div>

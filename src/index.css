@@ -16,7 +16,6 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 10px;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 }
@@ -55,9 +54,11 @@ body {
 .avatar{
   border: 1px solid gray;
   border-radius: 50%;
-  display:block;
   max-width: 30%;
   height: 60px;
+  align-self: center;
+  margin-left:  15px;
+  align-items: flex-end;
 }
 
 .poll{
@@ -69,3 +70,13 @@ body {
   align-items: flex-start;
   padding-left: 20px;
 }
+
+/* ------NewQuestion------ */
+h2{
+  text-align: center
+}
+h1 {
+  overflow: hidden;
+  text-align: center;
+}
+

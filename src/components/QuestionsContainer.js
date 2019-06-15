@@ -1,23 +1,32 @@
 import React, { Component } from 'react'
-import Question from './Question'
+import QuestionCard from './QuestionCard'
 import { connect } from "react-redux";
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+
 
 class QuestionsContainer extends Component {
 
     render() {
-        //console.log("answered", [].concat.apply([], this.props.answered))
-        console.log("inside props",this.props)
-        const {users, questions, authedUser} = this.props
+        console.log("inside props", this.props)
         return (
    
             <div className="container">
-                QuestionsContainer
-                {/* {authedUser}
-                 {this.props.questions.id.map((id) => (
+                answered
+                {this.props.answeredQs.map((id) => (
                     <li key={id}>
-                        <Question id={id} />
+                        <QuestionCard id = {id} status = 'answered'/>
                     </li>
-                ))} */}
+                ))}
+                <div>
+                    unansweredQs
+                {this.props.unansweredQs.map((id) => (
+                        <li key={id}>
+                            <QuestionCard id={id} status = 'unswered'/>
+                        </li>
+                    ))}
+
+                </div>
             </div>
         )
     }
@@ -25,30 +34,17 @@ class QuestionsContainer extends Component {
 }
 
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ questions, users, authedUser }) {
 
-   const  questionsIds = questions && Object.keys(questions)
-   //const authedUserAnswers = authedUser ? users[authedUser].answers : null;
-
-   const   authedUserAnswers =  (authedUser !== null) ? 
-        users[authedUser].name
-   
-   :  ("authed is null")
-   console.log(authedUserAnswers)
-  // const authedUserAnswers = authedUser ? users[authedUser].answers : null;
+    const questionIds = Object.keys(questions).sort((a, b) => questions[a].timestamp - questions[b].timestamp)
+    const answeredQs = Object.keys(users[authedUser].answers)
     return {
-        users,
-        authedUserAnswers,
-        questions,
-        authedUser,
-        questionsIds
+        questionIds,
+        answeredQs,
+        unansweredQs: questionIds.filter(q => !answeredQs.includes(q)),
     }
  
 }
 
-// const authedUserAnswers = users[authedUser]
-// questions: questionsIds,
-// authedUserAnswers,
-// authedUser
 
 export default connect(mapStateToProps)(QuestionsContainer)
