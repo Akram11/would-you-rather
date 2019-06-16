@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Media from 'react-bootstrap/Media';
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class UnansweredQuestion extends Component {
   render() {
@@ -21,29 +22,17 @@ class UnansweredQuestion extends Component {
             <Media.Body>
               name Asks:
               <h5> Would you rather?</h5>
+              result
               <Form>
-                <fieldset>
                   <Form.Group as={Row}>
                     <Form.Label as='legend' column sm={3} />
                     <Col lg={1}>
-                      <Form.Check
-                        type='radio'
-                        label='first option'
-                        name='formHorizontalRadios'
-                        id='optionOne'
-                      />
-                      <Form.Check
-                        type='radio'
-                        label='second option'
-                        name='formHorizontalRadios'
-                        id='OptionTwo'
-                      />
+                      Opttion One
+                    <ProgressBar now={57} />
+                    Opttion Two
+                    <ProgressBar now={30} />
                     </Col>
                   </Form.Group>
-                </fieldset>
-                <Button variant='outline-secondary' size='sm' block>
-                  Submit
-                </Button>
               </Form>
             </Media.Body>
           </Media>
