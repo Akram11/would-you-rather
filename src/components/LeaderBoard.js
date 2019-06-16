@@ -8,7 +8,7 @@ class LeaderBoard extends Component{
         console.log (usersIDs)
         console.log(this.props)
         return(
-            <div className = 'container'>
+            <div className="container">
                 {usersIDs.map( (id) => (<p>{ users[id].questions.length}</p> ))}
                 
             </div>

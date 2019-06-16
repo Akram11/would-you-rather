@@ -1,31 +1,39 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {formatQuestion} from '../utils/helper'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Media from 'react-bootstrap/Media'
+
+
 class Question extends Component {
 
     render() {
         const {question} = this.props
         console.log('inside question',this.props)
         return (
-            <div className='question'>
-                <div className = 'q-header'>
-                    {question.name} Asks: 
-                </div>
-                <div className = 'q-body'>
-                <div className = 'asker-info' >
-                <img src="https://img.icons8.com/color/48/000000/user.png"
-                     alt = "avatar pic"
-                     className = 'avatar' />
-                <span className = 'asker-name'>{question.name}</span>
-                </div>
 
-                <div className = 'poll'>
-                    <span> Would you rather? </span>
+
+            <div className='question'>
+                 <Media>
+                    <img
+                        width={64}
+                        height={64}
+                        className="mr-3"
+                        src="https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg"
+                        alt="Generic placeholder"
+                    />
+                    { <Media.Body>
+                        {question.name} Asks: 
+                        <h5> Would you rather?</h5>
+                        <Form>
+                            <Form.Group>
                     <span> {question.optionOne}, OR ...</span>
-                    <button> view poll </button>
-                </div>
-                </div>
-                
+                            </Form.Group>
+                        <Button variant="outline-secondary" size="sm" block > View Poll</Button>
+                        </Form>
+                    </Media.Body> }
+                </Media>
                 
             </div>
         )
