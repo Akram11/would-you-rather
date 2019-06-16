@@ -20,16 +20,16 @@ class UnansweredQuestion extends Component {
               alt='Generic placeholder'
             />
             <Media.Body>
-              name Asks:
+              Asked by USER
               <h5> Would you rather?</h5>
               result
               <Form>
                   <Form.Group as={Row}>
                     <Form.Label as='legend' column sm={3} />
                     <Col lg={1}>
-                      Opttion One
+                      Option One
                     <ProgressBar now={57} />
-                    Opttion Two
+                    Optton Two
                     <ProgressBar now={30} />
                     </Col>
                   </Form.Group>

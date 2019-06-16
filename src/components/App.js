@@ -6,7 +6,7 @@ import NewQuestion from './NewQuestion';
 import UnansweredQuestion from './UnansweredQuestion'
 import LeaderBoard from './LeaderBoard'
 import AnsweredQuestion from './AnsweredQuestion'
-
+import UserCard from './UserCard'
 
 class App extends Component {
 
@@ -23,8 +23,9 @@ class App extends Component {
             ? null
             :<>
             {/* <NewQuestion />  */}
-            <AnsweredQuestion />
-            {/* <LeaderBoard /> */}
+            {/* <AnsweredQuestion /> */}
+            <LeaderBoard />
+            <UserCard />
             {/* <QuestionsContainer /> */}
             </>}
         </div>

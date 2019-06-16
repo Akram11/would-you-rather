@@ -15,6 +15,7 @@ class Question extends Component {
 
 
             <div className='question'>
+                <div className = 'user'>
                  <Media>
                     <img
                         width={64}
@@ -34,7 +35,7 @@ class Question extends Component {
                         </Form>
                     </Media.Body> }
                 </Media>
-                
+                </div>
             </div>
         )
     }
