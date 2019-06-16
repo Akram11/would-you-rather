@@ -22,9 +22,9 @@ class App extends Component {
             ? null
             :<>
             {/* <NewQuestion />  */}
-            {/* <UnansweredQuestion /> */}
+            <UnansweredQuestion />
             {/* <LeaderBoard /> */}
-            <QuestionsContainer />
+            {/* <QuestionsContainer /> */}
             </>}
         </div>
     );
