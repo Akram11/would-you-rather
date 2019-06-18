@@ -14,7 +14,7 @@ body {
 
 .container {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0px auto;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   align-content: space-between;
   margin: 15px;
+  
 }
    
 .q-header{

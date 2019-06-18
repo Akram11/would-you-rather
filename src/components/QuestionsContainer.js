@@ -41,15 +41,13 @@ class QuestionsContainer extends Component {
               <QuestionCard id={id} status="answered" />
             </li>
           ))
-        ) : (
-          <div>
-            {this.props.unansweredQs.map(id => (
-              <li key={id}>
-                <QuestionCard id={id} status="unswered" />
-              </li>
-            ))}
-          </div>
-        )}
+        ) :
+          this.props.unansweredQs.map(id => (
+            <li key={id}>
+              <QuestionCard id={id} status="unswered" />
+            </li>
+          ))
+        }
       </div>
     );
   }

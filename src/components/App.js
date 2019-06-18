@@ -24,9 +24,9 @@ class App extends Component {
             :<>
             {/* <NewQuestion />  */}
             {/* <AnsweredQuestion /> */}
-            <LeaderBoard />
-            <UserCard />
-            {/* <QuestionsContainer /> */}
+            {/* <LeaderBoard /> */}
+            {/* <UserCard /> */}
+            <QuestionsContainer />
             </>}
         </div>
     );

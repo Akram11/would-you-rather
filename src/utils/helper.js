@@ -5,7 +5,7 @@ export function formatQuestion(question, author){
 
     return{
         id,
-        name,
+        author:name,
         avatar: avatarURL,
         optionOne: optionOne.text,
         optionTwo: optionTwo.text
