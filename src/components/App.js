@@ -18,15 +18,14 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          hello
         {this.props.loading === true
             ? null
             :<>
             {/* <NewQuestion />  */}
-            {/* <AnsweredQuestion /> */}
+            <AnsweredQuestion  match={{params: {id: '8xf0y6ziyjabvozdd253nd'}}}/>
             {/* <LeaderBoard /> */}
             {/* <UserCard /> */}
-            <QuestionsContainer />
+            {/* <QuestionsContainer /> */}
             </>}
         </div>
     );

@@ -5,9 +5,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Media from 'react-bootstrap/Media';
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import { connect } from "react-redux";
 
-class UnansweredQuestion extends Component {
+class AnsweredQuestion extends Component {
   render() {
+    console.log(this.props)
+    const author = this.props.questions[this.props.id].author
     return (
       <div className='container'>
         <div className='question'>
@@ -20,16 +23,16 @@ class UnansweredQuestion extends Component {
               alt='Generic placeholder'
             />
             <Media.Body>
-              Asked by USER
+              Asked by {author}
               <h5> Would you rather?</h5>
               result
               <Form>
                   <Form.Group as={Row}>
                     <Form.Label as='legend' column sm={3} />
                     <Col lg={1}>
-                      Option One
+                    OptionOne
                     <ProgressBar now={57} />
-                    Optton Two
+                    Option Two
                     <ProgressBar now={30} />
                     </Col>
                   </Form.Group>
@@ -42,9 +45,14 @@ class UnansweredQuestion extends Component {
   }
 }
 
-//  function mapsStateToProps({users, questions, authedUser}, {id}) {
-//      return
+ function mapStateToProps({users, questions, authedUser}, props) {
+     const {id} = props.match.params
+     return {
+       id, 
+       questions,
+       users
+     }
 
-// }
+}
 
-export default UnansweredQuestion;
+export default connect(mapStateToProps)(AnsweredQuestion);
