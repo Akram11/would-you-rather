@@ -7,9 +7,24 @@ import Media from 'react-bootstrap/Media';
 import {connect} from 'react-redux'
 
 class UnansweredQuestion extends Component {
+
+  state = {
+    answer: ''
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+ 
+  }
+
+  handleChange = (e) => {
+    const answer = e.target.value
+    this.setState(() => ({
+        answer
+    }))
+}
+
   render() {
     const { authedUser, users, questions, id } = this.props;
-    console.log(this.props)
     const authorID = questions[id].author
     const authorName = users[authorID].name;
     return (
@@ -30,13 +45,14 @@ class UnansweredQuestion extends Component {
                 <fieldset>
                   <Form.Group as={Row}>
                     <Form.Label as='legend' column sm={3} />
-                    <Col lg={1}>
+                    <Col lg={1} onChange={this.handleChange}>
                       <Form.Check
                         type='radio'
                         label={questions[id].optionOne.text}
                         name='formHorizontalRadios'
                         id='optionOne'
                         className = 'votes'
+                        value = 'optionOne'
                       />
                       <Form.Check
                         type='radio'
@@ -44,11 +60,12 @@ class UnansweredQuestion extends Component {
                         name='formHorizontalRadios'
                         id='OptionTwo'
                         className = 'votes'
+                        value = 'optionTwo'
                       />
                     </Col>
                   </Form.Group>
                 </fieldset>
-                <Button variant='outline-secondary' size='sm' block>
+                <Button variant='outline-secondary' size='sm' block onClick={this.handleSubmit}>
                   Submit
                 </Button>
               </Form>
