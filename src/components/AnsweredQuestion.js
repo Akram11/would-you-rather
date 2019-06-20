@@ -18,8 +18,6 @@ class AnsweredQuestion extends Component {
     const OptionOneVotes = questions[id].optionOne.votes.length;
     const OptionTwoVotes = questions[id].optionTwo.votes.length;
     const totalVotes = OptionTwoVotes + OptionOneVotes;
-
-    console.log('sfsf', AuthedAnswer, OptionOneVotes);
     return (
       <div className='container'>
         <div className='question'>
@@ -39,16 +37,18 @@ class AnsweredQuestion extends Component {
                 <Form.Group as={Row}>
                   <Form.Label as='legend' />
                   <Col>
-                    <div  className = 'votes'>
-                      <span>{questions[id].optionOne.text}</span>
+                    <div className='votes'>
+                      <span>{questions[id].optionOne.text}   </span>
+                      <Badge pill variant="danger">{AuthedAnswer === 'optionOne' ? 'You Answered': ''}</Badge>
                       <ProgressBar
                         max={totalVotes}
                         now={OptionOneVotes}
                         label={`${OptionOneVotes} of ${totalVotes}`}
                       />
                     </div>
-                    <div className = 'votes'>
-                      <span>{questions[id].optionTwo.text}</span>
+                    <div className='votes'>
+                      <span>{questions[id].optionTwo.text}    </span>
+                      <Badge pill variant="danger">{AuthedAnswer === 'optionTwo' ? 'You Answered': ''}</Badge>
                       <ProgressBar
                         max={totalVotes}
                         now={OptionTwoVotes}
