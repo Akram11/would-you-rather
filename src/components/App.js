@@ -22,10 +22,12 @@ class App extends Component {
             ? null
             :<>
             {/* <NewQuestion />  */}
-            <AnsweredQuestion  match={{params: {id: '8xf0y6ziyjabvozdd253nd'}}}/>
+            <AnsweredQuestion  match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/>
             {/* <LeaderBoard /> */}
             {/* <UserCard /> */}
             {/* <QuestionsContainer /> */}
+            {/* {<UnansweredQuestion />} */}
+          
             </>}
         </div>
     );
