@@ -19,7 +19,6 @@ class UserCard extends Component{
                 Questions
                 Answeres
                 Score
-             
             </Media.Body>
           </Media>
                 </div>

@@ -4,9 +4,14 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Media from 'react-bootstrap/Media';
+import {connect} from 'react-redux'
 
 class UnansweredQuestion extends Component {
   render() {
+    const { authedUser, users, questions, id } = this.props;
+    console.log(this.props)
+    const authorID = questions[id].author
+    const authorName = users[authorID].name;
     return (
       <div className='container'>
         <div className='question'>
@@ -19,7 +24,7 @@ class UnansweredQuestion extends Component {
               alt='Generic placeholder'
             />
             <Media.Body>
-              name Asks:
+              {authorName} Asks:
               <h5> Would you rather?</h5>
               <Form>
                 <fieldset>
@@ -28,15 +33,17 @@ class UnansweredQuestion extends Component {
                     <Col lg={1}>
                       <Form.Check
                         type='radio'
-                        label='first option'
+                        label={questions[id].optionOne.text}
                         name='formHorizontalRadios'
                         id='optionOne'
+                        className = 'votes'
                       />
                       <Form.Check
                         type='radio'
-                        label='second option'
+                        label={questions[id].optionTwo.text}
                         name='formHorizontalRadios'
                         id='OptionTwo'
+                        className = 'votes'
                       />
                     </Col>
                   </Form.Group>
@@ -53,9 +60,15 @@ class UnansweredQuestion extends Component {
   }
 }
 
-//  function mapsStateToProps({users, questions, authedUser}, {id}) {
-//      return
+ function mapsStateToProps({users, questions, authedUser}, props) {
+  const { id } = props.match.params;
+  return {
+    id,
+    authedUser,
+    questions,
+    users
+  };
 
-// }
+}
 
-export default UnansweredQuestion;
+export default connect(mapsStateToProps)(UnansweredQuestion);
