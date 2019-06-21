@@ -24,11 +24,19 @@ export default function questions(state = {}, action) {
                         ...state[action.qid][action.answer],
                         votes: state[action.qid][action.answer].votes.concat([action.authedUser])
                     }
-                }
-            }
+                },
+
+            //     [action.authedUser]: {
+            //         ...state[action.authedUser],
+            //         answers: {
+            //             ...state[action.authedUser].answers,
+            //             [action.qid] : [action.answer]
+            //         }
+            // }
+    }
 
 
         default:
-            return state
-    }
+    return state
+}
 }

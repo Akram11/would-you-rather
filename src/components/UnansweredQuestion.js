@@ -22,6 +22,9 @@ class UnansweredQuestion extends Component {
       qid: id,
       answer
     }))
+    this.setState(() => ({
+     answer : ''
+  }))
   }
 
   handleChange = (e) => {
