@@ -4,7 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Media from 'react-bootstrap/Media';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { handleSaveQuestionAnswer } from '../actions/questions';
 
 class UnansweredQuestion extends Component {
 
@@ -13,15 +14,22 @@ class UnansweredQuestion extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
- 
+    const authedUser = this.props.authedUser
+    const answer = this.state.answer
+    const { dispatch, id } = this.props
+    dispatch(handleSaveQuestionAnswer({
+      authedUser,
+      qid: id,
+      answer
+    }))
   }
 
   handleChange = (e) => {
     const answer = e.target.value
     this.setState(() => ({
-        answer
+      answer
     }))
-}
+  }
 
   render() {
     const { authedUser, users, questions, id } = this.props;
@@ -51,16 +59,16 @@ class UnansweredQuestion extends Component {
                         label={questions[id].optionOne.text}
                         name='formHorizontalRadios'
                         id='optionOne'
-                        className = 'votes'
-                        value = 'optionOne'
+                        className='votes'
+                        value='optionOne'
                       />
                       <Form.Check
                         type='radio'
                         label={questions[id].optionTwo.text}
                         name='formHorizontalRadios'
                         id='OptionTwo'
-                        className = 'votes'
-                        value = 'optionTwo'
+                        className='votes'
+                        value='optionTwo'
                       />
                     </Col>
                   </Form.Group>
@@ -77,7 +85,7 @@ class UnansweredQuestion extends Component {
   }
 }
 
- function mapsStateToProps({users, questions, authedUser}, props) {
+function mapsStateToProps({ users, questions, authedUser }, props) {
   const { id } = props.match.params;
   return {
     id,
