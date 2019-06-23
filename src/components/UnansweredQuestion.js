@@ -38,6 +38,7 @@ class UnansweredQuestion extends Component {
     const { authedUser, users, questions, id } = this.props;
     const authorID = questions[id].author
     const authorName = users[authorID].name;
+    const active = this.state.answer === '' ? 'disabled': 'active'
     return (
       <div className='container'>
         <div className='question'>
@@ -76,7 +77,7 @@ class UnansweredQuestion extends Component {
                     </Col>
                   </Form.Group>
                 </fieldset>
-                <Button variant='outline-secondary' size='sm' block onClick={this.handleSubmit}>
+                <Button variant='outline-secondary' size='sm' block onClick={this.handleSubmit} disabled={this.state.answer === '' ? true : false}>
                   Submit
                 </Button>
               </Form>
