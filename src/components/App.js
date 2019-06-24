@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import {BrowserRouter as Router , Route} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
 import QuestionsContainer from './QuestionsContainer'
@@ -7,6 +8,7 @@ import UnansweredQuestion from './UnansweredQuestion'
 import LeaderBoard from './LeaderBoard'
 import AnsweredQuestion from './AnsweredQuestion'
 import UserCard from './UserCard'
+import Nav from './Navbar'
 
 class App extends Component {
 
@@ -17,19 +19,26 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
+        <Fragment>
+        <Nav />
         <div className="App">
         {this.props.loading === true
             ? null
-            :<>
+            :<div>
+              <Route path='/' exact component={QuestionsContainer} />
+              <Route path= '/new' component = {NewQuestion } />
             {/* <NewQuestion />  */}
             {/* <AnsweredQuestion  match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/> */}
             {/* <LeaderBoard /> */}
             {/* <UserCard /> */}
             {/* <QuestionsContainer /> */}
-            {<UnansweredQuestion match={{params: {id: 'xj352vofupe1dqz9emx13r'}}}/>}
-          
-            </>}
-        </div>
+            {/* {<UnansweredQuestion match={{params: {id: 'xj352vofupe1dqz9emx13r'}}}/>} */}
+           </div>
+            }
+         </div>
+        </Fragment>
+      </Router>
     );
   }
 }
