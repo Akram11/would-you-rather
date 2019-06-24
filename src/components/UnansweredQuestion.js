@@ -38,7 +38,6 @@ class UnansweredQuestion extends Component {
     const { authedUser, users, questions, id } = this.props;
     const authorID = questions[id].author
     const authorName = users[authorID].name;
-    const active = this.state.answer === '' ? 'disabled': 'active'
     return (
       <div className='container'>
         <div className='question'>
@@ -55,9 +54,9 @@ class UnansweredQuestion extends Component {
               <h5> Would you rather?</h5>
               <Form>
                 <fieldset>
-                  <Form.Group as={Row}>
+                  <Form.Group>
                     <Form.Label as='legend' column sm={3} />
-                    <Col lg={1} onChange={this.handleChange}>
+                    <Col lg={9} onChange={this.handleChange}>
                       <Form.Check
                         type='radio'
                         label={questions[id].optionOne.text}
