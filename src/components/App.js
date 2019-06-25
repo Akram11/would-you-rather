@@ -21,13 +21,14 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-        <Nav />
+        <Nav user= {this.props.authedUser}/>
         <div className="App">
         {this.props.loading === true
             ? null
             :<div>
-              <Route path='/' exact component={QuestionsContainer} />
-              <Route path= '/new' component = {NewQuestion } />
+              <Route path ='/' exact component={QuestionsContainer} />
+              <Route path = '/new' component = {NewQuestion } />
+              <Route path = '/Leader-Board' component ={LeaderBoard} />
             {/* <NewQuestion />  */}
             {/* <AnsweredQuestion  match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/> */}
             {/* <LeaderBoard /> */}
@@ -46,7 +47,8 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser
   }
 }
 
