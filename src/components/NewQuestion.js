@@ -45,7 +45,7 @@ class NewQuestion extends Component {
 
         render() {
 
-            if (this.toHome === true) {
+            if (this.state.toHome === true) {
                 return <Redirect to = '/' />
             }
             return (
