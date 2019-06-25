@@ -10,7 +10,7 @@ export default function Nav(props) {
   return (
     <>
       <Navbar bg="dark" variant="dark" className = 'nav-bar'>
-          <NavLink className = 'nav-elm' to='/' exact> home </NavLink>
+          <NavLink className = 'nav-elm' to='/' exact> Home </NavLink>
           <NavLink className = 'nav-elm' to='/new' exact> New Question </NavLink>
           <NavLink className = 'nav-elm' to='/Leader-Board'> Leader Board </NavLink> 
 
