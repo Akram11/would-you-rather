@@ -29,7 +29,8 @@ class App extends Component {
               <Route path ='/' exact component={QuestionsContainer} />
               <Route path = '/new' component = {NewQuestion } />
               <Route path = '/Leader-Board' component ={LeaderBoard} />
-              <Route path = '/question/:id' component = {AnsweredQuestion}/>
+              <Route path = '/results/:id' component = {AnsweredQuestion}/>
+              <Route path = '/question/:id' component = {UnansweredQuestion}/>
             {/* <NewQuestion />  */}
             {/* <AnsweredQuestion  match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}}/> */}
             {/* <LeaderBoard /> */}
