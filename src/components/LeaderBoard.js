@@ -6,14 +6,14 @@ class LeaderBoard extends Component {
   render() {
     const usersIDs = this.props.usersIDs;
     const users = this.props.users;
-    console.log('props',usersIDs);
     console.log(this.props);
     return (
       <div className='container'>
-        {/* {usersIDs.map( (id) => (<p>{ users[id].questions.length}</p> ))} */}
+        <h1>Leader Board</h1>
         {usersIDs.map(id => (
             <li key= {id}>
-                { users[id].name}
+                { users[id].name}{ users[id].questions.length } {Object.keys(users[id].answers).join(" ???????? ")}
+                {  }
             <UserCard />
           </li>
         ))}
@@ -25,7 +25,7 @@ class LeaderBoard extends Component {
 function mapStateToProps({ users }) {
   return {
     usersIDs: Object.keys(users),
-    users
+    users,
   };
 }
 

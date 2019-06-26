@@ -21,11 +21,11 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-        <Nav user= {this.props.authedUser}/>
         <div className="App">
         {this.props.loading === true
             ? null
             :<div>
+              <Nav user= {this.props.username}/>
               <Route path ='/' exact component={QuestionsContainer} />
               <Route path = '/new' component = {NewQuestion } />
               <Route path = '/Leader-Board' component ={LeaderBoard} />
@@ -47,10 +47,11 @@ class App extends Component {
 }
 
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
     loading: authedUser === null,
-    authedUser
+    authedUser,
+    username: authedUser && users[authedUser].name
   }
 }
 

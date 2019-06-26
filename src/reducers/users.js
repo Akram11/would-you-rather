@@ -1,5 +1,5 @@
-import { RECEIVE_USERS } from '../actions/users';
-import { SAVE_QUESTION_ANSWER } from '../actions/questions';
+import { RECEIVE_USERS } from "../actions/users";
+import { SAVE_QUESTION_ANSWER, ADD_QUESTION } from "../actions/questions";
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -8,6 +8,18 @@ export default function users(state = {}, action) {
         ...state,
         ...action.users
       };
+
+    case ADD_QUESTION: {
+      const { question } = action;
+      console.log("reducer", state[question.author]);
+      return {
+        ...state,
+        [question.author]: {
+          ...state[question.author],
+          questions: state[question.author].questions.concat([question.id])
+        }
+      };
+    }
 
     case SAVE_QUESTION_ANSWER:
       const { authedUser, qid, answer } = action;

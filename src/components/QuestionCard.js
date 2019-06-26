@@ -11,10 +11,7 @@ class Question extends Component {
 
     render() {
         const { question , id } = this.props
-        console.log('inside question', id)
         return (
-
-
             <div className='question'>
                 <div>
                     <Media>
