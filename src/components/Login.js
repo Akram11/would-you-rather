@@ -1,45 +1,47 @@
-import React, { Component } from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
+import { connect } from "react-redux";
+import { Form } from "react-bootstrap";
+import {setAuthedUser} from '../actions/authedUser'
 
 class Login extends Component {
+
+  state={
+    user: ''
+  }
   handleChange = e => {
-    console.log(e.target);
+    const user = e.target.value;
+    this.setState(()=>({
+     user: user
+    }))
   };
+
+  handleSubmit = (e) =>{
+    e.preventDefault()
+    const { dispatch } = this.props;
+    const authedUser = this.state.user
+    dispatch(setAuthedUser(authedUser))
+  }
   render() {
     const { usersIDs, users } = this.props;
     return (
-      <div className='container'>
-        <div className='login'>
+      <div className="container">
+        <div className="login">
           <h1>Login</h1>
-          <Dropdown variant='secondary' size='lg'>
-            <Dropdown.Toggle
-              id='dropdown-basic '
-              size='md'
-              variant='secondary'
-              block
-            >
-              Choose user
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              {usersIDs.map(uid => (
-                <Dropdown.Item
-                  href='#/action-2'
-                  key={uid}
-                  id={uid}
-                  onSelect = {this.handleChange}
-                >
-                  {users[uid].name}
-                </Dropdown.Item>
-              ))}
-              {/* <Dropdown.Item href='#/action-2'>user 2 </Dropdown.Item>
-            <Dropdown.Item href='#/action-3'>user 3</Dropdown.Item> */}
-            </Dropdown.Menu>
-          </Dropdown>
-          <Button variant='outline-secondary'> Login </Button>
+          <Form>
+          <Form.Control as="select" onChange={this.handleChange}>
+            <option> choose user </option>
+            {usersIDs.map(uid => (
+              <option key={uid} id={uid}>
+                {uid}
+                {/* {users[uid].name} */}
+              </option>
+            ))}
+          </Form.Control>
+          <Button variant="outline-secondary" onClick={this.handleSubmit}  block> Login </Button>
+          </Form>
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ class LeaderBoard extends Component {
         <h1>Leader Board</h1>
         {usersIDs.map(id => (
             <li key= {id}>
-                { users[id].name}{ users[id].questions.length } {Object.keys(users[id].answers).join(" ???????? ")}
+                { users[id].name}{ users[id].questions.length } {Object.keys(users[id].answers).length}
                 {  }
             <UserCard />
           </li>
