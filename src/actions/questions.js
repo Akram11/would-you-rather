@@ -28,7 +28,6 @@ export function receiveQuestions(questions) {
 }
 
 export function handleSaveQuestionAnswer(info) {
-    console.log('inside handle save:',info)
     return (dispatch) => {
         dispatch(saveAnswer(info))
 

@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 
 class Login extends Component {
+  handleChange = e => {
+    console.log(e.target);
+  };
   render() {
     const { usersIDs, users } = this.props;
     return (
@@ -23,7 +26,12 @@ class Login extends Component {
 
             <Dropdown.Menu>
               {usersIDs.map(uid => (
-                <Dropdown.Item href='#/action-2' key={uid} id={uid}>
+                <Dropdown.Item
+                  href='#/action-2'
+                  key={uid}
+                  id={uid}
+                  onSelect = {this.handleChange}
+                >
                   {users[uid].name}
                 </Dropdown.Item>
               ))}

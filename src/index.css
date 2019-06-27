@@ -86,3 +86,19 @@ h1 {
   padding: 10px;
   margin: 5px;
 }
+
+.nav-bar{
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  color:red;
+}
+.nav-bar img{
+  margin-left: auto;
+}
+.nav-elm{
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+  margin: 5px;
+}

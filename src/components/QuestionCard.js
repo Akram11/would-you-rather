@@ -4,16 +4,14 @@ import { formatQuestion } from '../utils/helper'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Media from 'react-bootstrap/Media'
+import {Link} from 'react-router-dom'
 
 
 class Question extends Component {
 
     render() {
-        const { question } = this.props
-        console.log('inside question', this.props)
+        const { question , id } = this.props
         return (
-
-
             <div className='question'>
                 <div>
                     <Media>
@@ -31,7 +29,7 @@ class Question extends Component {
                                 <Form.Group>
                                     <span> {question.optionOne}, OR ...</span>
                                 </Form.Group>
-                                <Button variant="outline-secondary" size="sm" block > View Poll</Button>
+                                <Link to={this.props.status === 'answered' ? `/results/${id}` : `/question/${id}`} ><Button variant="outline-secondary" size="sm" block > View Poll</Button></Link>
                             </Form>
                         </Media.Body>}
                     </Media>

@@ -10,7 +10,6 @@ import { Badge } from 'react-bootstrap';
 
 class AnsweredQuestion extends Component {
   render() {
-    console.log(this.props);
     const { authedUser, users, questions, id } = this.props;
     const authorID = questions[id].author;
     const authorName = users[authorID].name;

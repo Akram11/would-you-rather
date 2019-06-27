@@ -15,7 +15,6 @@ class QuestionsContainer extends Component {
   };
 
   render() {
-    console.log("inside props", this.state);
     return (
       <div className="container">
         <Nav fill variant="tabs" defaultActiveKey="#">
