@@ -27,7 +27,7 @@ class App extends Component {
         {this.props.loading === true
             ? null
             :this.props.authedUser !== ''? <div>
-              <Nav user= {this.props.username}/>
+              <Nav />
               <Route path ='/' exact component={QuestionsContainer} />
               <Route path = '/new' component = {NewQuestion } />
               <Route path = '/Leader-Board' component ={LeaderBoard} />
@@ -53,7 +53,6 @@ function mapStateToProps({ authedUser, users }) {
   return {
     loading: authedUser === null,
     authedUser,
-    username: authedUser && users[authedUser].name
   }
 }
 

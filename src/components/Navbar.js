@@ -2,12 +2,22 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from 'react-bootstrap/Button'
 import { NavLink } from "react-router-dom";
 import {Form, FormControl} from 'react-bootstrap'
-import React from "react";
+import React, {Component} from "react";
+import { connect } from 'react-redux';
+import {setAuthedUser} from '../actions/authedUser'
 
-export default function Nav(props) {
-  console.log('nav bar:', props)
-  return (
-    <>
+class Nav extends Component{
+  handleLogout = e => {
+    e.preventDefault();
+    const {dispatch} = this.props
+    dispatch(setAuthedUser(""))
+ 
+  }
+
+
+  render(){
+    return(
+      <>
       <Navbar bg="dark" variant="dark" className = 'nav-bar'>
           <NavLink className = 'nav-elm' to='/' exact> Home </NavLink>
           <NavLink className = 'nav-elm' to='/new' exact> New Question </NavLink>
@@ -21,11 +31,20 @@ export default function Nav(props) {
               alt='Generic placeholder'
               />
          
-           <span>Hello, {props.user}</span>
+           <span>Hello, {this.props.name}</span>
 
-          <Button  variant="outline-light">sign out</Button>
+          <Button  variant="outline-light" onClick={this.handleLogout}>sign out</Button>
   
       </Navbar>
     </>
-  );
+    )
+  }
 }
+
+
+function mapStateToProps({authedUser, users}){
+  return{
+    name: users[authedUser].name
+  }
+}
+export default connect(mapStateToProps)(Nav)
