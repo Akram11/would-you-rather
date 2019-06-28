@@ -42,7 +42,8 @@ class UnansweredQuestion extends Component {
     if (this.state.toHome === true) {
       return <Redirect to="/" />;
     }
-    const { authedUser, users, questions, id } = this.props;
+    const { authedUser, users, questions, id, avatarURL } = this.props;
+    console.log(this.props)
     const authorID = questions[id].author;
     const authorName = users[authorID].name;
     return (
@@ -53,7 +54,7 @@ class UnansweredQuestion extends Component {
               width={64}
               height={64}
               className="mr-3"
-              src="https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg"
+              src={avatarURL}
               alt="Generic placeholder"
             />
             <Media.Body>
@@ -107,7 +108,8 @@ function mapsStateToProps({ users, questions, authedUser }, props) {
     id,
     authedUser,
     questions,
-    users
+    users,
+    avatarURL: users[authedUser].avatarURL
   };
 }
 

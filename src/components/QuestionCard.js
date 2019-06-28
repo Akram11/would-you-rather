@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom'
 class Question extends Component {
 
     render() {
-        const { question , id } = this.props
+        const { question , id, avatarURL } = this.props
         return (
             <div className='question'>
                 <div>
@@ -19,7 +19,7 @@ class Question extends Component {
                             width={64}
                             height={64}
                             className="mr-3"
-                            src="https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg"
+                            src={avatarURL}
                             alt="Generic placeholder"
                         />
                         {<Media.Body>
@@ -42,9 +42,11 @@ class Question extends Component {
 function mapStateToProps({ authedUser, users, questions }, { id }) {
     const question = questions[id]
     const author = users[question.author]
+    const avatarURL = users[question.author].avatarURL
 
     return {
         authedUser,
+        avatarURL,
         question: question
             ? formatQuestion(question, author, authedUser)
             : null

@@ -3,7 +3,7 @@ import Media from "react-bootstrap/Media";
 
 class UserCard extends Component {
   render() {
-    const  {name, questionsNo, answersNo} = this.props
+    const  {name, questionsNo, answersNo, avatarURL} = this.props
     const  score = questionsNo + answersNo 
     return (
       <div className="container">
@@ -13,7 +13,7 @@ class UserCard extends Component {
               width={64}
               height={64}
               className="mr-3"
-              src="https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg"
+              src={avatarURL}
               alt="Generic placeholder"
               />
             <Media.Body className = 'usr-card-info'>

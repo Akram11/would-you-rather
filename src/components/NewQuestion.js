@@ -57,8 +57,7 @@ class NewQuestion extends Component {
                             width={64}
                             height={64}
                             className="mr-3"
-                            //src\utils\avatars\iconfinder_user_male2_172626 (1).png
-                            src="https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg"
+                            src= {this.props.avatarURL}
                             alt="Generic placeholder"
                         />
                         <Media.Body>
@@ -78,5 +77,10 @@ class NewQuestion extends Component {
         }
     }
 
+    function mapStateToProps({ authedUser, users }) {
+        return {
+          avatarURL: users[authedUser].avatarURL
+        };
+      }
 
-export default connect()(NewQuestion)
+export default connect(mapStateToProps)(NewQuestion)

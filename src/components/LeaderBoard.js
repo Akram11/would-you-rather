@@ -17,6 +17,7 @@ class LeaderBoard extends Component {
               name={users[id].name}
               questionsNo={users[id].questions.length}
               answersNo={Object.keys(users[id].answers).length}
+              avatarURL= {users[id].avatarURL}
             />
           </li>
 
