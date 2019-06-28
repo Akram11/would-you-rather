@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import UserCard from './UserCard'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import UserCard from "./UserCard";
 
 class LeaderBoard extends Component {
   render() {
@@ -8,15 +8,20 @@ class LeaderBoard extends Component {
     const users = this.props.users;
     console.log(this.props);
     return (
-      <div className='container'>
+      <div className="container">
         <h1>Leader Board</h1>
+        <ul>
         {usersIDs.map(id => (
-            <li key= {id}>
-                { users[id].name}{ users[id].questions.length } {Object.keys(users[id].answers).length}
-                {  }
-            <UserCard />
+          <li key={id}>
+            <UserCard
+              name={users[id].name}
+              questionsNo={users[id].questions.length}
+              answersNo={Object.keys(users[id].answers).length}
+            />
           </li>
+
         ))}
+        </ul>
       </div>
     );
   }
@@ -25,7 +30,7 @@ class LeaderBoard extends Component {
 function mapStateToProps({ users }) {
   return {
     usersIDs: Object.keys(users),
-    users,
+    users
   };
 }
 

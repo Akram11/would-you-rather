@@ -23,6 +23,7 @@ class App extends Component {
       <Router>
         <Fragment>
         <div className="App">
+          <LeaderBoard />
         {this.props.loading === true
             ? null
             :this.props.authedUser !== ''? <div>
@@ -35,11 +36,10 @@ class App extends Component {
               
             {/* <NewQuestion />  */}
             {/* <AnsweredQuestion  match={{params: {id: 'xj352vofupe1dqz9emx13r'}}}/> */}
-            {/* <LeaderBoard /> */}
             {/* <UserCard /> */}
             {/* <QuestionsContainer /> */}
             {/* {<UnansweredQuestion match={{params: {id: 'xj352vofupe1dqz9emx13r'}}}/>} */}
-           </div> : <div> {<Route path = '/login' component = {Login} />}</div>
+           </div> :  <Route path = '/login' component = {Login} />
             }
          </div>
         </Fragment>

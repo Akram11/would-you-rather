@@ -1,30 +1,32 @@
-import React, {Component} from 'react'
-import Media from 'react-bootstrap/Media';
+import React, { Component } from "react";
+import Media from "react-bootstrap/Media";
 
-class UserCard extends Component{
-
-    render(){
-        return(
-            <div className = 'container'>
-                <div className = 'user'>
-                          <Media>
+class UserCard extends Component {
+  render() {
+    const  {name, questionsNo, answersNo} = this.props
+    const  score = questionsNo + answersNo 
+    return (
+      <div className="container">
+        <div className="user">
+          <Media>
             <img
               width={64}
               height={64}
-              className='mr-3'
-              src='https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg'
-              alt='Generic placeholder'
-            />
-            <Media.Body>
-                Questions
-                Answeres
-                Score
+              className="mr-3"
+              src="https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg"
+              alt="Generic placeholder"
+              />
+            <Media.Body className = 'usr-card-info'>
+              <span>{name}</span>
+              <span>Questions: {questionsNo}</span>
+              <span>Answers: {answersNo}</span>
+              <span>Score: {score}</span>
             </Media.Body>
           </Media>
-                </div>
-             </div>
-        )
-    }
+        </div>
+      </div>
+    );
+  }
 }
 
-export default UserCard
+export default UserCard;
