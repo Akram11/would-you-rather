@@ -18,6 +18,11 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
 
+// // TO DO :
+// - FIX ROUTING AND RENDERING 
+// - SHOW LeaderBoard ACCORDING TO SCORE VALUE
+// - COVER 404 CASES , LINKS THAT HAVE NO ID , LINKS THAT SHOULD NOT BE ACCESSES WITHOUT THE RIGHT CREDENTIALS 
+
 
   render() {
     return (
