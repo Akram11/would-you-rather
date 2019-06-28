@@ -35,7 +35,7 @@ class Nav extends Component {
             alt="Generic placeholder"
           />
 
-          <span>Hello, {this.props.name}</span>
+          <span className='greeting'>Hello, {this.props.name}</span>
 
           <Button variant="outline-light" onClick={this.handleLogout}>
             sign out

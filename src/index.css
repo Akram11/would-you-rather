@@ -21,6 +21,12 @@ body {
   flex-direction: column;
 }
 
+.greeting{
+  margin-right: 25px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
 .question , .user, .login{
   border: 1px solid gray;
   border-radius: 5px;
