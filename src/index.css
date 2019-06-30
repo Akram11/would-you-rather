@@ -37,6 +37,12 @@ body {
   margin: 15px;
   
 }
+
+.login h1, button{
+  margin-bottom: 10px;
+  margin-top: 15px;
+  padding: 10px;
+}
    
 .q-header{
   align-self: stretch;

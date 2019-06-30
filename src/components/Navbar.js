@@ -48,8 +48,8 @@ class Nav extends Component {
 
 function mapStateToProps({ authedUser, users }) {
   return {
-    name: users[authedUser].name,
-    avatarURL: users[authedUser].avatarURL
+    name: authedUser && users[authedUser].name,
+    avatarURL: authedUser && users[authedUser].avatarURL
   };
 }
 export default connect(mapStateToProps)(Nav);
