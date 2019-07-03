@@ -22,6 +22,7 @@ class App extends Component {
   // - show user names on login page
   // - SHOW LeaderBoard ACCORDING TO SCORE VALUE
   // - COVER 404 CASES , LINKS THAT HAVE NO ID , LINKS THAT SHOULD NOT BE ACCESSES WITHOUT THE RIGHT CREDENTIALS
+  // - sort leader board based on Score
 
 
   render() {
