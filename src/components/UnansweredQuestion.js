@@ -40,7 +40,7 @@ class UnansweredQuestion extends Component {
 
   render() {
     if (this.state.toHome === true) {
-      return <Redirect to="/" />;
+      return <Redirect to="/results/" />;
     }
     const { authedUser, users, questions, id, avatarURL } = this.props;
     console.log(this.props)

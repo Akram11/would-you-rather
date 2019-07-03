@@ -5,16 +5,30 @@ import { Form, FormControl } from "react-bootstrap";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
+import { Redirect } from "react-router-dom";
 
 class Nav extends Component {
+
+  state = {
+    signedout: false 
+  }
+
+
   handleLogout = e => {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(setAuthedUser(""));
+    this.setState(()=>({
+      signedout: true
+    }))
   };
 
   render() {
+    if (this.state.signedout === true) {
+      return <Redirect to="/login" />;
+    } else
     return (
+
       <>
         <Navbar bg="dark" variant="dark" className="nav-bar">
           <NavLink className="nav-elm" to="/" exact>

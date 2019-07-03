@@ -23,30 +23,32 @@ class App extends Component {
   // - SHOW LeaderBoard ACCORDING TO SCORE VALUE
   // - COVER 404 CASES , LINKS THAT HAVE NO ID , LINKS THAT SHOULD NOT BE ACCESSES WITHOUT THE RIGHT CREDENTIALS
 
+
   render() {
     return (
       <Router>
         <Fragment>
-          <Login />
-          {/* <div className='App'>
+          { <div className='App'>
             {console.log('loading',this.props.loading)}
-            {this.props.loading === true ? <div>loading</div> : <div>
+            {/* /*{this.props.loading === true ? <div>loading</div> : <div>
               <Nav />
               <Login />
               <QuestionsContainer /> 
               
-            </div>
-              // <div>
-              // <Nav />
-              //   <Route path='/login' component={Login} />
-              //   <Route path='/' exact component={QuestionsContainer} />
-              //   <Route path='/new' component={NewQuestion} />
-              //   <Route path='/Leader-Board' component={LeaderBoard} />
-              //   <Route path='/results/:id' component={AnsweredQuestion} />
-              //   <Route path='/question/:id' component={UnansweredQuestion} />
-              // </div>
+            </div>*/}
+            {this.props.loading === true
+              ? null :
+               <div>
+               <Nav />
+                <Route path='/login' component={Login} />
+                 <Route path='/' exact component={QuestionsContainer} />
+                 <Route path='/new' component={NewQuestion} />
+                 <Route path='/Leader-Board' component={LeaderBoard} />
+                 <Route path='/results/:id' component={AnsweredQuestion} />
+                 <Route path='/question/:id' component={UnansweredQuestion} />
+               </div>
             }
-          </div> */}
+          </div> }
         </Fragment>
        </Router>
     );
