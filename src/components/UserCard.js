@@ -14,7 +14,7 @@ class UserCard extends Component {
               height={64}
               className="mr-3"
               src={avatarURL}
-              alt="Generic placeholder"
+              alt="user avatar"
               />
             <Media.Body className = 'usr-card-info'>
               <span>{name}</span>

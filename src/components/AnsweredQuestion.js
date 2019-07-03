@@ -26,7 +26,7 @@ class AnsweredQuestion extends Component {
               height={64}
               className='mr-3'
               src='https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg'
-              alt='Generic placeholder'
+              alt='user Avatar'
             />
             <Media.Body>
               Asked by {authorName}

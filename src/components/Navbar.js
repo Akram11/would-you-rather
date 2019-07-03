@@ -46,7 +46,7 @@ class Nav extends Component {
             height={64}
             className="mr-3"
             src={this.props.avatarURL}
-            alt="Generic placeholder"
+            alt="user Avatar"
           />
 
           <span className='greeting'>Hello, {this.props.name}</span>

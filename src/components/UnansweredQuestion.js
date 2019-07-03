@@ -40,7 +40,7 @@ class UnansweredQuestion extends Component {
 
   render() {
     if (this.state.toHome === true) {
-      return <Redirect to="/results/" />;
+      return <Redirect to={`/results/${this.props.id}`} />;
     }
     const { authedUser, users, questions, id, avatarURL } = this.props;
     console.log(this.props)
@@ -55,7 +55,7 @@ class UnansweredQuestion extends Component {
               height={64}
               className="mr-3"
               src={avatarURL}
-              alt="Generic placeholder"
+              alt="user avatar"
             />
             <Media.Body>
               {authorName} Asks:
