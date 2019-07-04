@@ -47,7 +47,7 @@ class Routes extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser,  }) {
   return {
     loading: authedUser === null,
     authedUser

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
-import { connect } from 'react-redux';
-import { Form } from 'react-bootstrap';
-import { setAuthedUser } from '../actions/authedUser';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
+import { connect } from "react-redux";
+import { Form } from "react-bootstrap";
+import { setAuthedUser } from "../actions/authedUser";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
-    user: '',
+    user: "",
     toHome: false
   };
   handleChange = e => {
@@ -26,23 +26,24 @@ class Login extends Component {
     const authedUser = this.state.user;
     dispatch(setAuthedUser(authedUser));
     this.setState(() => ({
-      user: '',
+      user: "",
       toHome: true
     }));
   };
   render() {
-    console.log('login',this.state);
+    console.log("login", this.state);
     if (this.state.toHome === true) {
-      return <Redirect to='/' />;
+      return <Redirect to="/" />;
     }
 
     const { usersIDs, users } = this.props;
+    console.log("props", this.props);
     return (
-      <div className='container'>
-        <div className='login'>
+      <div className="container">
+        <div className="login">
           <h1>Login</h1>
           <Form>
-            <Form.Control as='select' onChange={this.handleChange}>
+            <Form.Control as="select" onChange={this.handleChange}>
               <option> choose user </option>
               {usersIDs.map(uid => (
                 <option key={uid} value={uid}>
@@ -51,10 +52,10 @@ class Login extends Component {
               ))}
             </Form.Control>
             <Button
-              variant='outline-secondary'
+              variant="outline-secondary"
               onClick={this.handleSubmit}
               block
-              disabled={this.state.user === '' ? true : false}
+              disabled={this.state.user === "" ? true : false}
             >
               Login
             </Button>
@@ -67,6 +68,7 @@ class Login extends Component {
 
 function MapStateToProps({ users }) {
   return {
+    Loading: users === {},
     usersIDs: Object.keys(users),
     users
   };

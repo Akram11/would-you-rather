@@ -84,6 +84,7 @@ class NewQuestion extends Component {
                   size='lg'
                   block
                   onClick={this.handleSubmit}
+                  disabled={(this.state.optionOne === '' ||  this.state.optionTwo === '') ? true : false}
                 >
                   Submit
                 </Button>
