@@ -6,7 +6,6 @@ class LeaderBoard extends Component {
   render() {
     const usersIDs = this.props.usersIDs;
     const users = this.props.users;
-    console.log('oshfoh');
     return (
       <div className='container'>
         <h1>Leader Board</h1>

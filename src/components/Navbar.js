@@ -15,23 +15,27 @@ class Nav extends Component {
   handleLogout = e => {
     e.preventDefault();
     const { dispatch } = this.props;
-    dispatch(setAuthedUser(''));
+    dispatch(setAuthedUser(null));
     this.setState(() => ({
       signedout: true
     }));
   };
 
   render() {
+    if (this.state.signedout === true) {
+      return <Redirect to='/login' />;
+    }
     return (
       <>
+   
         <Navbar bg='dark' variant='dark' className='nav-bar'>
-          <Link className='nav-elm' to='/home'>
+          <Link className='nav-elm' to='/'>
             Home
           </Link>
-          <Link className='nav-elm' to='new'>
+          <Link className='nav-elm' to='/new'>
             New Question
           </Link>
-          <Link className='nav-elm' to='Leader-Board'>
+          <Link className='nav-elm' to='/Leader-Board'>
             Leader Board
           </Link>
 

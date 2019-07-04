@@ -1,30 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { handleInitialData } from '../../actions/shared';
-import Nav from '../Navbar';
-import App from '../App';
-import Login from '../Login';
-import LeaderBoard from '../LeaderBoard';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { handleInitialData } from "../../actions/shared";
+import App from "../App";
+import Login from "../Login";
+
 
 class Routes extends Component {
-  shouldComponentUpdate(nextProps) {
-    console.log(nextProps);
-    return false;
-  }
+
   componentWillMount() {
     this.props.dispatch(handleInitialData());
   }
-  componentDidMount() {
-    // //   this.props.loadging
-    // if (this.props.authedUser === null) {
-    //   this.props.history.push('/login');
-    // } else {
-    //   this.props.history.push('/');
-    // }
-    console.log(this.props);
-  }
+  // componentDidMount() {
+
+  //   if (this.props.authedUser === null) {
+  //     this.props.history.push('/login');
+  //   } else {
+  //     this.props.history.push('/');
+  //   }
+  //   console.log(this.props);
+  // }
   render() {
     //const { autherUser } = this.props;
     console.log(this.props);
@@ -35,16 +31,17 @@ class Routes extends Component {
       <>
         <Route
           exact
-          path='/'
+          path="/"
           render={() =>
             this.props.authedUser === null ? (
-              <Redirect to='/login' />
+              <Redirect to="/login" />
             ) : (
-              <App match={this.props.match} />
+              <App />
+              // match={this.props.match}
             )
           }
         />
-        <Route path='/login' component={Login} />
+        <Route path="/login" component={Login} />
       </>
     );
   }
