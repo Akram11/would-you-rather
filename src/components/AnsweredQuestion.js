@@ -13,6 +13,7 @@ class AnsweredQuestion extends Component {
     const { authedUser, users, questions, id } = this.props;
     const authorID = questions[id].author;
     const authorName = users[authorID].name;
+    const avatarURL = users[authorID].avatarURL;
     const AuthedAnswer = users[authedUser].answers[id];
     const OptionOneVotes = questions[id].optionOne.votes.length;
     const OptionTwoVotes = questions[id].optionTwo.votes.length;
@@ -25,7 +26,7 @@ class AnsweredQuestion extends Component {
               width={64}
               height={64}
               className='mr-3'
-              src='https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568248-stock-illustration-male-face-avatar-logo-template.jpg'
+              src={avatarURL}
               alt='user Avatar'
             />
             <Media.Body>
@@ -37,8 +38,10 @@ class AnsweredQuestion extends Component {
                   <Form.Label as='legend' />
                   <Col>
                     <div className='votes'>
-                      <span>{questions[id].optionOne.text}   </span>
-                      <Badge pill variant="danger">{AuthedAnswer === 'optionOne' ? 'You Answered': ''}</Badge>
+                      <span>{questions[id].optionOne.text} </span>
+                      <Badge pill variant='danger'>
+                        {AuthedAnswer === 'optionOne' ? 'You Answered' : ''}
+                      </Badge>
                       <ProgressBar
                         max={totalVotes}
                         now={OptionOneVotes}
@@ -46,8 +49,10 @@ class AnsweredQuestion extends Component {
                       />
                     </div>
                     <div className='votes'>
-                      <span>{questions[id].optionTwo.text}    </span>
-                      <Badge pill variant="danger">{AuthedAnswer === 'optionTwo' ? 'You Answered': ''}</Badge>
+                      <span>{questions[id].optionTwo.text} </span>
+                      <Badge pill variant='danger'>
+                        {AuthedAnswer === 'optionTwo' ? 'You Answered' : ''}
+                      </Badge>
                       <ProgressBar
                         max={totalVotes}
                         now={OptionTwoVotes}
