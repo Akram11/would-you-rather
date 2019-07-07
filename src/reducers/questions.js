@@ -1,42 +1,39 @@
-import { RECEIVE_QUESTIONS, ADD_QUESTION, SAVE_QUESTION_ANSWER } from '../actions/questions'
+import {
+  RECEIVE_QUESTIONS,
+  ADD_QUESTION,
+  SAVE_QUESTION_ANSWER
+} from '../actions/questions';
 
 export default function questions(state = {}, action) {
-    switch (action.type) {
-        case RECEIVE_QUESTIONS:
-            return {
-                ...state,
-                ...action.questions
-            }
+  switch (action.type) {
+    case RECEIVE_QUESTIONS:
+      return {
+        ...state,
+        ...action.questions
+      };
 
-        case ADD_QUESTION:
-            console.log('action:', action)
-            return {
-                ...state,
-                [action.question.id]: action.question,
-            }
+    case ADD_QUESTION:
+      console.log('action:', action);
+      return {
+        ...state,
+        [action.question.id]: action.question
+      };
 
-        case SAVE_QUESTION_ANSWER:
-            return {
-                ...state,
-                [action.qid]: {
-                    ...state[action.qid],
-                    [action.answer]: {
-                        ...state[action.qid][action.answer],
-                        votes: state[action.qid][action.answer].votes.concat([action.authedUser])
-                    }
-                },
+    case SAVE_QUESTION_ANSWER:
+      return {
+        ...state,
+        [action.qid]: {
+          ...state[action.qid],
+          [action.answer]: {
+            ...state[action.qid][action.answer],
+            votes: state[action.qid][action.answer].votes.concat([
+              action.authedUser
+            ])
+          }
+        }
+      };
 
-            //     [action.authedUser]: {
-            //         ...state[action.authedUser],
-            //         answers: {
-            //             ...state[action.authedUser].answers,
-            //             [action.qid] : [action.answer]
-            //         }
-            // }
-    }
-
-
-        default:
-    return state
-}
+    default:
+      return state;
+  }
 }

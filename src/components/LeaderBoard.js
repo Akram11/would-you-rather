@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserCard from './UserCard';
+import orderBy from 'lodash/orderBy';
 
 class LeaderBoard extends Component {
   render() {
     const usersIDs = this.props.usersIDs;
-    const users = this.props.users;
+    const ArrayOfUsersWithScore = this.props.ArrayOfUsersWithScore;
+    const sorted = orderBy(ArrayOfUsersWithScore, ['score'], ['desc']);
+    console.log(this.props.ArrayOfUsersWithScore);
+    console.log('sorted', sorted);
+
     return (
       <div className='container'>
         <h1>Leader Board</h1>
-        <ul>
-          {usersIDs.map(id => (
-            <li key={id}>
+        <ul className='flex'>
+          {sorted.map(user => (
+            <li key={user.id}>
               <UserCard
-                name={users[id].name}
-                questionsNo={users[id].questions.length}
-                answersNo={Object.keys(users[id].answers).length}
-                avatarURL={users[id].avatarURL}
+                name={user.name}
+                questionsNo={user.questions.length}
+                answersNo={Object.keys(user.answers).length}
+                avatarURL={user.avatarURL}
               />
             </li>
           ))}
@@ -27,9 +32,19 @@ class LeaderBoard extends Component {
 }
 
 function mapStateToProps({ users }) {
+  let ArrayOfUsers = Object.keys(users).map(key => {
+    return users[key];
+  });
+
+  let ArrayOfUsersWithScore = ArrayOfUsers.map(user => {
+    return {
+      ...user,
+      score: user.questions.length + Object.keys(user.answers).length
+    };
+  });
   return {
     usersIDs: Object.keys(users),
-    users
+    ArrayOfUsersWithScore
   };
 }
 
