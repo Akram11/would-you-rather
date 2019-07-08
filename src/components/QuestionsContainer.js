@@ -8,18 +8,19 @@ class QuestionsContainer extends Component {
   render() {
     return (
       <div className="container">
-        <Tabs>
+               <Tabs>
+                  <Tab eventKey="profile" title="Unanswered Questions">
+            {this.props.unansweredQs.map(id => (
+              <li key={id}>
+                <QuestionCard id={id} status="unanswered" />
+              </li>
+            ))}
+          </Tab>
+ 
           <Tab eventKey="home" title="Answered Questions">
             {this.props.answeredQs.map(id => (
               <li key={id}>
                 <QuestionCard id={id} status="answered" />
-              </li>
-            ))}
-          </Tab>
-          <Tab eventKey="profile" title="Unanswered Questions">
-            {this.props.unansweredQs.map(id => (
-              <li key={id}>
-                <QuestionCard id={id} status="unanswered" />
               </li>
             ))}
           </Tab>
