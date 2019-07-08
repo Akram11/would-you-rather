@@ -30,14 +30,16 @@ class QuestionsContainer extends Component {
 }
 
 function mapStateToProps({ questions, users, authedUser }) {
-  const questionIds = Object.keys(questions).sort(
+  const questionIds = Object.keys(questions)
+  const answeredQs = Object.keys(users[authedUser].answers).sort(
     (a, b) => questions[b].timestamp - questions[a].timestamp
   );
-  const answeredQs = Object.keys(users[authedUser].answers);
   return {
     questionIds,
     answeredQs,
-    unansweredQs: questionIds.filter(q => !answeredQs.includes(q))
+    unansweredQs: questionIds.filter(q => !answeredQs.includes(q)).sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
+    )
   };
 }
 
