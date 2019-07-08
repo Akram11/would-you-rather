@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import reducer from './reducers';
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
-import App from './components/App';
 import middleware from './middlewares';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RootWithAuth from '../src/components/routes/routes';

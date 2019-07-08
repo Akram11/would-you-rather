@@ -6,8 +6,6 @@ import App from '../App';
 import Login from '../Login';
 
 class Routes extends Component {
-  // componentWillMount() {
-  // }
   componentDidMount() {
     this.props.dispatch(handleInitialData());
     if (this.props.authedUser === null) {

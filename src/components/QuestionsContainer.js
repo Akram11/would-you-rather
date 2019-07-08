@@ -1,56 +1,39 @@
-import React, { Component } from 'react';
-import QuestionCard from './QuestionCard';
-import { connect } from 'react-redux';
-import Nav from 'react-bootstrap/Nav';
+import React, { Component } from "react";
+import QuestionCard from "./QuestionCard";
+import { connect } from "react-redux";
+import Nav from "react-bootstrap/Nav";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 class QuestionsContainer extends Component {
-  state = {
-    answered: true
-  };
-
-  changeView = e => {
-    this.setState(() => ({ answered: !this.state.answered }));
-  };
 
   render() {
     return (
-      <div className='container'>
-        <Nav fill variant='tabs' defaultActiveKey='#'>
-          <Nav.Item>
-            <Nav.Link href='#' value='answered' onClick={this.changeView}>
-              Answered Q's
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link
-              eventKey='link-1'
-              value='unaswered'
-              onClick={this.changeView}
-            >
-              Unanswered Q's
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item />
-        </Nav>
-        {this.state.answered
-          ? this.props.answeredQs.map(id => (
+      <div className="container">
+        <Tabs>
+          <Tab eventKey="home" title="Answered Questions">
+            {this.props.answeredQs.map(id => (
               <li key={id}>
-                <QuestionCard id={id} status='answered' />
-              </li>
-            ))
-          : this.props.unansweredQs.map(id => (
-              <li key={id}>
-                <QuestionCard id={id} status='unswered' />
+                <QuestionCard id={id} status="answered" />
               </li>
             ))}
-      </div>
+          </Tab>
+          <Tab eventKey="profile" title="Uanswered Questions">
+            {this.props.unansweredQs.map(id => (
+              <li key={id}>
+                <QuestionCard id={id} status="unswered" />
+              </li>
+            ))}
+          </Tab>
+        </Tabs>
+      </div> 
     );
   }
 }
 
 function mapStateToProps({ questions, users, authedUser }) {
   const questionIds = Object.keys(questions).sort(
-    (a, b) => questions[a].timestamp - questions[b].timestamp
+    (a, b) => questions[b].timestamp - questions[a].timestamp
   );
   const answeredQs = Object.keys(users[authedUser].answers);
   return {
