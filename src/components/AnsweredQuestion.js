@@ -6,18 +6,18 @@ import Media from "react-bootstrap/Media";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { connect } from "react-redux";
 import { Badge } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class AnsweredQuestion extends Component {
   render() {
     const { authedUser, users, questions, id } = this.props;
-    const authorID = questions[id].author;
-    const authorName = users[authorID].name;
-    const avatarURL = users[authorID].avatarURL;
-    const AuthedAnswer = users[authedUser].answers[id];
-    const OptionOneVotes = questions[id].optionOne.votes.length;
-    const OptionTwoVotes = questions[id].optionTwo.votes.length;
-    const totalVotes = OptionTwoVotes + OptionOneVotes;
+    const authorID = questions[id].author,
+          authorName = users[authorID].name,
+          avatarURL = users[authorID].avatarURL,
+          AuthedAnswer = users[authedUser].answers[id],
+          OptionOneVotes = questions[id].optionOne.votes.length,
+          OptionTwoVotes = questions[id].optionTwo.votes.length,
+          totalVotes = OptionTwoVotes + OptionOneVotes;
     return (
       <div className="container">
         <div className="question">
