@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { Form } from "react-bootstrap";
@@ -31,13 +29,11 @@ class Login extends Component {
     }));
   };
   render() {
-    console.log("login", this.state);
     if (this.state.toHome === true) {
       return <Redirect to="/" />;
     }
-
+    
     const { usersIDs, users } = this.props;
-    console.log("props", this.props);
     return (
       <div className="container">
         <div className="login">

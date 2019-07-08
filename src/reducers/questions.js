@@ -13,7 +13,6 @@ export default function questions(state = {}, action) {
       };
 
     case ADD_QUESTION:
-      console.log('action:', action);
       return {
         ...state,
         [action.question.id]: action.question

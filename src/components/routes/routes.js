@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { handleInitialData } from '../../actions/shared';
-import App from '../App';
-import Login from '../Login';
+import React, { Component } from "react";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { handleInitialData } from "../../actions/shared";
+import App from "../App";
+import Login from "../Login";
 
 class Routes extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
     if (this.props.authedUser === null) {
-      this.props.history.push('/login');
+      this.props.history.push("/login");
     } else {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
-    console.log(this.props);
   }
 
   Notfound = () => {
@@ -21,27 +20,21 @@ class Routes extends Component {
   };
 
   render() {
-    //const { autherUser } = this.props;
-    console.log(this.props);
-    // if (this.props.loading) {
-    //   return <h1>sssfsf/</h1>;
-    // }
     return (
       <>
         <Switch>
           <Route
             exact
-            path='/'
+            path="/"
             render={() =>
               this.props.authedUser === null ? (
-                <Redirect to='/login' />
+                <Redirect to="/login" />
               ) : (
                 <App />
-                // match={this.props.match}
               )
             }
           />
-          <Route path='/login' component={Login} />
+          <Route path="/login" component={Login} />
           <Route component={this.Notfound} />
         </Switch>
       </>

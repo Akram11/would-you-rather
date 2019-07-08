@@ -11,7 +11,6 @@ export default function users(state = {}, action) {
 
     case ADD_QUESTION: {
       const { question } = action;
-      console.log("reducer", state[question.author]);
       return {
         ...state,
         [question.author]: {

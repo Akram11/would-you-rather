@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import Media from 'react-bootstrap/Media';
 import { connect } from 'react-redux';
 import { handleSaveQuestionAnswer } from '../actions/questions';
@@ -43,7 +42,6 @@ class UnansweredQuestion extends Component {
       return <Redirect to={`/results/${this.props.id}`} />;
     }
     const { users, questions, id } = this.props;
-    console.log(this.props);
     const authorID = questions[id].author;
     const authorName = users[authorID].name;
     const avatarURL = users[authorID].avatarURL;

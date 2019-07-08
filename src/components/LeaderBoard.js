@@ -5,11 +5,8 @@ import orderBy from 'lodash/orderBy';
 
 class LeaderBoard extends Component {
   render() {
-    const usersIDs = this.props.usersIDs;
     const ArrayOfUsersWithScore = this.props.ArrayOfUsersWithScore;
     const sorted = orderBy(ArrayOfUsersWithScore, ['score'], ['desc']);
-    console.log(this.props.ArrayOfUsersWithScore);
-    console.log('sorted', sorted);
 
     return (
       <div className='container'>
@@ -42,6 +39,7 @@ function mapStateToProps({ users }) {
       score: user.questions.length + Object.keys(user.answers).length
     };
   });
+  
   return {
     usersIDs: Object.keys(users),
     ArrayOfUsersWithScore

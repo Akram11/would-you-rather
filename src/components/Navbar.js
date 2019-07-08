@@ -1,16 +1,12 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import { Form, FormControl } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
-import { Redirect } from 'react-router-dom';
 
 class Nav extends Component {
-  state = {
-    signedout: false
-  };
+
 
   handleLogout = e => {
     e.preventDefault();
@@ -31,7 +27,6 @@ class Nav extends Component {
           <Link className='nav-elm' to='/Leader-Board'>
             Leader Board
           </Link>
-
           <img
             width={64}
             height={64}
@@ -39,9 +34,7 @@ class Nav extends Component {
             src={this.props.avatarURL}
             alt='user Avatar'
           />
-
           <span className='greeting'>Hello, {this.props.name}</span>
-
           <Button variant='outline-light' onClick={this.handleLogout}>
             sign out
           </Button>

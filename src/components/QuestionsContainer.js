@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import QuestionCard from "./QuestionCard";
 import { connect } from "react-redux";
-import Nav from "react-bootstrap/Nav";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 
 class QuestionsContainer extends Component {
-
   render() {
     return (
       <div className="container">
@@ -18,10 +16,10 @@ class QuestionsContainer extends Component {
               </li>
             ))}
           </Tab>
-          <Tab eventKey="profile" title="Uanswered Questions">
+          <Tab eventKey="profile" title="Unanswered Questions">
             {this.props.unansweredQs.map(id => (
               <li key={id}>
-                <QuestionCard id={id} status="unswered" />
+                <QuestionCard id={id} status="unanswered" />
               </li>
             ))}
           </Tab>

@@ -38,15 +38,12 @@ class NewQuestion extends Component {
       optionTwo: '',
       toHome: true
     }));
-
-    console.log('after dispatch', this.state);
   };
 
   render() {
     if (this.state.toHome === true) {
       return <Redirect to='/' />;
     }
-    console.log('new');
     return (
       <div className='container'>
         <h2 className='center'> Create a new question</h2>
