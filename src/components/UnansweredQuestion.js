@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Media from "react-bootstrap/Media";
-import { connect } from "react-redux";
-import { handleSaveQuestionAnswer } from "../actions/questions";
-import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Media from 'react-bootstrap/Media';
+import { connect } from 'react-redux';
+import { handleSaveQuestionAnswer } from '../actions/questions';
+import { Redirect, Link } from 'react-router-dom';
 
 class UnansweredQuestion extends Component {
   state = {
-    answer: "",
+    answer: '',
     toHome: false
   };
   handleSubmit = e => {
@@ -26,7 +25,7 @@ class UnansweredQuestion extends Component {
       })
     );
     this.setState(() => ({
-      answer: "",
+      answer: '',
       toHome: true
     }));
   };
@@ -45,22 +44,22 @@ class UnansweredQuestion extends Component {
     const { users, questions, id } = this.props;
 
     if (!questions.hasOwnProperty(id)) {
-      return <Redirect to='/not-found' />
+      return <Redirect to='/not-found' />;
     }
 
     const authorID = questions[id].author;
     const authorName = users[authorID].name;
     const avatarURL = users[authorID].avatarURL;
     return (
-      <div className="container">
-        <div className="question">
+      <div className='container'>
+        <div className='question'>
           <Media>
             <img
               width={64}
               height={64}
-              className="mr-3"
+              className='mr-3'
               src={avatarURL}
-              alt="user avatar"
+              alt='user avatar'
             />
             <Media.Body>
               {authorName} Asks:
@@ -68,33 +67,33 @@ class UnansweredQuestion extends Component {
               <Form>
                 <fieldset>
                   <Form.Group>
-                    <Form.Label as="legend" column sm={3} />
+                    <Form.Label as='legend' column sm={3} />
                     <Col lg={9} onChange={this.handleChange}>
                       <Form.Check
-                        type="radio"
+                        type='radio'
                         label={questions[id].optionOne.text}
-                        name="formHorizontalRadios"
-                        id="optionOne"
-                        className="votes"
-                        value="optionOne"
+                        name='formHorizontalRadios'
+                        id='optionOne'
+                        className='votes'
+                        value='optionOne'
                       />
                       <Form.Check
-                        type="radio"
+                        type='radio'
                         label={questions[id].optionTwo.text}
-                        name="formHorizontalRadios"
-                        id="OptionTwo"
-                        className="votes"
-                        value="optionTwo"
+                        name='formHorizontalRadios'
+                        id='OptionTwo'
+                        className='votes'
+                        value='optionTwo'
                       />
                     </Col>
                   </Form.Group>
                 </fieldset>
                 <Button
-                  variant="outline-secondary"
-                  size="sm"
+                  variant='outline-secondary'
+                  size='sm'
                   block
                   onClick={this.handleSubmit}
-                  disabled={this.state.answer === "" ? true : false}
+                  disabled={this.state.answer === '' ? true : false}
                 >
                   Submit
                 </Button>
@@ -102,7 +101,7 @@ class UnansweredQuestion extends Component {
             </Media.Body>
           </Media>
         </div>
-        <Link className="nav-elm" to="/">
+        <Link className='nav-elm' to='/'>
           Back to Home
         </Link>
       </div>

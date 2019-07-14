@@ -10,10 +10,11 @@ import { Link, Redirect } from 'react-router-dom';
 
 class AnsweredQuestion extends Component {
   render() {
-    if (!this.props.questions.hasOwnProperty(this.props.id)) {
+    const { authedUser, users, questions, id } = this.props;
+
+    if (!questions.hasOwnProperty(id)) {
       return <Redirect to='/not-found' />;
     }
-    const { authedUser, users, questions, id } = this.props;
     const authorID = questions[id].author,
       authorName = users[authorID].name,
       avatarURL = users[authorID].avatarURL,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../../actions/shared';
 import App from '../App';
@@ -13,22 +13,16 @@ class Routes extends Component {
   };
 
   componentDidMount() {
-    console.log('component did mount');
-    console.log('location:', this.props.location);
     this.setState({ entryLocation: this.props.location.pathname });
     this.props.dispatch(handleInitialData());
     if (this.props.authedUser === null) {
       this.props.history.push('/login');
-      console.log('in if');
     } else {
-      console.log('in else');
       this.props.history.push(this.sate.entryLocation);
     }
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('did update');
-    console.log(prevProps, prevState);
+  componentDidUpdate(prevProps, prevState) {
     if (
       this.props.authedUser &&
       this.state.firstTimeLoad &&
@@ -40,9 +34,6 @@ class Routes extends Component {
   }
 
   render() {
-    console.log('autherduser!!!!', this.props.authedUser);
-    console.log('state', this.state);
-    console.log('match', this.props.match);
     return (
       <>
         <Switch>
@@ -51,8 +42,8 @@ class Routes extends Component {
             path='/'
             render={() => (!this.props.authedUser ? <Login /> : <App />)}
           />
-          <Route component={NotFound} />
           <Route exact path='/login' component={Login} />
+          <Route component={NotFound} />
           {/* <Route exact path='/not-found' component={NotFound} /> */}
           {/* <Redirect to='/not-found' /> */}
         </Switch>
