@@ -6,11 +6,10 @@ import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 
 class Nav extends Component {
-
-
   handleLogout = e => {
     e.preventDefault();
     const { dispatch } = this.props;
+    window.localStorage.removeItem('user');
     dispatch(setAuthedUser(null));
   };
 
