@@ -54,7 +54,7 @@ class Routes extends Component {
           <Route component={NotFound} />
           <Route exact path='/login' component={Login} />
           {/* <Route exact path='/not-found' component={NotFound} /> */}
-          <Redirect to='/not-found' />
+          {/* <Redirect to='/not-found' /> */}
         </Switch>
       </>
     );
