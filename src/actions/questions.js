@@ -40,7 +40,7 @@ export function handleSaveQuestionAnswer(info) {
 
 export function handleAddQuestion(optionOne, optionTwo) {
     return (dispatch, getState) => {
-        const { authedUser } = getState()
+        const { authedUser } = getState();
 
         return saveQuestion({
             author: authedUser,
