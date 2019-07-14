@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
-import { connect } from "react-redux";
-import { Form } from "react-bootstrap";
-import { setAuthedUser } from "../actions/authedUser";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
+import { Form } from 'react-bootstrap';
+import { setAuthedUser } from '../actions/authedUser';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
   state = {
-    user: "",
+    user: '',
     toHome: false
   };
   handleChange = e => {
@@ -22,24 +22,25 @@ class Login extends Component {
     e.preventDefault();
     const { dispatch } = this.props;
     const authedUser = this.state.user;
+    window.localStorage.setItem('user', authedUser);
     dispatch(setAuthedUser(authedUser));
     this.setState(() => ({
-      user: "",
+      user: '',
       toHome: true
     }));
   };
   render() {
-    if (this.state.toHome === true) {
-      return <Redirect to="/" />;
+    if (this.state.toHome === true || this.props.authedUser) {
+      return <Redirect to='/' />;
     }
-    
+
     const { usersIDs, users } = this.props;
     return (
-      <div className="container">
-        <div className="login">
+      <div className='container'>
+        <div className='login'>
           <h1>Login</h1>
           <Form>
-            <Form.Control as="select" onChange={this.handleChange}>
+            <Form.Control as='select' onChange={this.handleChange}>
               <option> choose user </option>
               {usersIDs.map(uid => (
                 <option key={uid} value={uid}>
@@ -48,10 +49,10 @@ class Login extends Component {
               ))}
             </Form.Control>
             <Button
-              variant="outline-secondary"
+              variant='outline-secondary'
               onClick={this.handleSubmit}
               block
-              disabled={this.state.user === "" ? true : false}
+              disabled={this.state.user === '' ? true : false}
             >
               Login
             </Button>
@@ -62,11 +63,12 @@ class Login extends Component {
   }
 }
 
-function MapStateToProps({ users }) {
+function MapStateToProps({ users, authedUser }) {
   return {
     Loading: users === {},
     usersIDs: Object.keys(users),
-    users
+    users,
+    authedUser
   };
 }
 
