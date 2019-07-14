@@ -5,7 +5,6 @@ import { handleInitialData } from '../../actions/shared';
 import App from '../App';
 import Login from '../Login';
 import NotFound from '../NotFound';
-import UnansweredQuestion from '../UnansweredQuestion';
 
 class Routes extends Component {
   state = {
@@ -52,11 +51,10 @@ class Routes extends Component {
             path='/'
             render={() => (!this.props.authedUser ? <Login /> : <App />)}
           />
-          {/*<Route path='/question/:id' component={UnansweredQuestion} />*/}
+          <Route component={NotFound} />
           <Route exact path='/login' component={Login} />
           {/* <Route exact path='/not-found' component={NotFound} /> */}
-          <Route component={NotFound} />
-          {/*<Redirect to="/not-found" />*/}
+          <Redirect to='/not-found' />
         </Switch>
       </>
     );
